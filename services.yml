@@ -8,9 +8,22 @@ spec:
   # or maybe external users to connect to (eg browser)
   selector:
     app: webapp
-    release: "0-5"
   ports:
     - name: http
       port: 80
       nodePort: 30080
+  type: NodePort
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleetman-queue
+spec:
+  ports:
+    - name: http
+      port: 8161
+      nodePort: 30010
+  selector:
+    app: queue
   type: NodePort
